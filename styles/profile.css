@@ -1,0 +1,112 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.navbar-inverse{
+    position: fixed;
+    z-index: 10;
+}
+.navbar-btn{
+    display: inline-block;
+    margin-right: 10px;
+    /* margin-top: 15px;   */
+    
+}
+.navbar-collapse{
+    margin-top: 15px;
+}
+#tbody{
+        counter-reset: serial-number;  /* Set the serial number counter to 0 */
+    
+}
+#tbody td:first-child:before {
+        counter-increment: serial-number;  /* Increment the serial number counter */
+        content: counter(serial-number);  /* Display the counter */
+      }
+
+.profile{
+    margin-top: 87px;
+}
+.createOrder{
+    margin-top: 100px;
+}
+.nav{
+    vertical-align: middle;
+    margin: auto;
+}
+.list-group{
+    /* margin-left: 50px; */
+    font-weight: 900;
+}
+.list-group >li >h5{
+    font-weight: 900;
+}
+.table-responsive{
+    background-color: lightgray;
+    /* display: block; */
+    overflow-x: auto;
+    /* width: 100%; */
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+     /* display: none;  */
+}
+th{
+padding: 10px;
+}
+table{
+/* border-collapse: collapse; */
+/* display: block; */
+/* width: 100%; */
+box-shadow: inset -5px -5px 10px gray;
+border-bottom-left-radius: 10px;
+border-top-right-radius: 10px;
+/* margin-top: 150px; */
+text-align: center;
+
+}
+footer{
+    background-color: black;
+    margin-top: 100px;
+}
+.row{
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+     margin-left: -15px;
+    margin-right: -15px; 
+}
+footer a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 50;
+    font-size: 14px;
+}
+footer h5{
+    font-weight: bolder;
+    font-size: 22px;
+}
+#changeDest, #cancelOrder{
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto
+
+}
+#changeDest, .editStatus{
+    color: steelblue;
+}
+small{
+    font-size: 14px;
+}
+#logout:hover {
+    background-color: rgb(240, 112, 112);
+    padding: 6px 16px;
+  }
+.App-logo{
+animation: App-logo-spin 20s linear infinite;
+-webkit-animation: App-logo-spin 20s linear infinite;
+}

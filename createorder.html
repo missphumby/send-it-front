@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>sendit order</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse" style="width: 100%;">
+
+            <div class="navbar-header">
+                <a class="nav-brand" href="#"><img class="img-fluid" src="imgs/send-logo.png"
+                        style="width: 180px; height: 60px; margin-top: 10px;" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" id="nameBar">Name</a></li>
+                <li><a class="btn btn-default navbar-btn active" style="padding: 5px; color: white; background-color: gray;">Create
+                        Order</a></li>
+                <li><button class="btn btn-danger navbar-btn">Log out</button></li>
+            </ul>
+         </div>
+        </nav><br>
+
+        <div class="container" style="margin: auto;">
+            <div class="createOrder">
+            <h2>Create Order</h2>
+            <form class=" orderForm col-sm-6" id="registration-form" method="POST" style="font-size: 20px;" name="myForm">
+                <div class="form-group form-group-lg">
+                    <label for="pickup" style="font-weight: lighter;">Pickup Location</label>
+                    <input class="form-control" type="text" id="pickup" name="pickup" required/>
+                </div>
+
+                <div class="form-group form-group-lg">
+                    <label for="dest" style="font-weight: lighter;">Destination</label>
+                    <input class="form-control" type="text" id="dest" name="dest" required />
+                </div>
+
+                <div class="form-group form-group-lg">
+                    <label for="name" style="font-weight: lighter;">Recipient Name</label>
+                    <input class="form-control" type="text" id="name" name="custname"  required/>
+                </div>
+                <div class="form-group form-group-lg">
+                    <label for="mobile" style="font-weight: lighter;">Recipient Mobile-Number</label>
+                    <input class="form-control" type="number" id="mobile" name="mobile" required/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" id="create">Create</button>
+            </form>
+        </div>
+    </div>
+        </div><br><br>
+
+        <div class="big-dark text-light">
+            <footer class="container py-5" style="height: 250px; width: 100%; color: white; font-size: 20px;">
+                <div class="row">
+                    <div class="col-sm-2"><img src="imgs/footerlogo.png" width="50" height="40" class="App-logo"
+                            alt=""><br><small class="d-block mb-3 text-light">Copyright © 2020. <br>Developed by Funby!</small>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>About Us</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-light" href="#">SendIT is a parcel/courier service that delivers
+                                    orders perfectly with utmost speed</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>Office Address</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-light" href="#">Ademola Adetokunbo Crescent, Victoria Island, Lagos State Nigeria</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5>Working Hours</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-light" href="#">Weekdays: 8am - 6pm</a></li>
+                            <li><a class="text-light" href="#">Weekends: 10am - 4pm</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>More Info</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-light" href="#">Team</a></li>
+                            <li><a class="text-light" href="#">Locations</a></li>
+                            <li><a class="text-light" href="#">Privacy</a></li>
+                            <li><a class="text-light" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <script src="./order.js"></script>
+</body>
+</html>
