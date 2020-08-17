@@ -1,4 +1,7 @@
 const url = "https://send-it-app.herokuapp.com";
+const email = document.getElementById("email");
+// const mobile = document.getElementById("phone-no");
+const password = document.getElementById("password");
 
 const login = (event) => {
   event.preventDefault();
@@ -16,9 +19,15 @@ const login = (event) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      // console.log(res);
 
-      if (res.token) {
+      if (res.message == "Authorization failed" && password != "" ){
+        alert('Unauthorized User, please enter a valid email address')
+       }
+       else if(res.msg == "incorrect password"  ){
+        alert('Incorrect password, please enter a valid password')
+        
+       }
+       else if (res.token) {
         const { _id } = res.user;
         localStorage.setItem("token", res.token);
 
@@ -31,19 +40,23 @@ const login = (event) => {
           .then((res) => res.json())
           .then((res) => {
             console.log("res", res);
-            if (res.success) {
+
+             if (res.success) {
               console.log("res2", res.success);
               localStorage.setItem("firstname", res.data.firstname);
               localStorage.setItem("userId", res.data._id);
               console.log("got here", res.data.roles[0])
               if (res.data.roles[0].name == "user") {
                 window.location.href = "./profile.html";
+                alert("Login successful")
               } else if (res.data.roles[0].name == "admin") {
                 window.location.href = "./admin.html";
+                alert("Login successful")
               }
             }
             else if (res.error) {
               console.log("error", res.err);
+              // alert('invalid email/password')
             }
           })
           .catch((err) => console.log("error occurred", err));

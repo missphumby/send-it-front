@@ -1,4 +1,5 @@
-// const userId = localStorage.getItem("userId");
+const mobile = document.getElementById('mobile');
+console.log(mobile)
 const firstname = localStorage.getItem("firstname");
 const token = localStorage.getItem("token");
 const userId = localStorage.getItem("userId");
@@ -11,7 +12,7 @@ if(!token){
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
 
 const createOrder = (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
   fetch(`${url}/order`, {
     method: "POST",
@@ -41,4 +42,23 @@ const createOrder = (event) => {
     .catch((err) => console.log("error occured", err));
 };
 
-document.getElementById("create").addEventListener("click", createOrder);
+function isNumberMatch(){
+  let numbers = /^[0-9]+$/;
+  if(mobile.value.match(numbers) && mobile.value.length == 11)
+  {return true;}
+  else if(mobile.value.length < 11 || mobile.value.length > 11){
+     alert("Phone number must be 11 digits")
+     return false;
+  }
+  else{
+  alert('Recipient Mobile-Number must have numeric characters only');
+  mobile.focus();
+  return false;}
+  }
+
+
+document.getElementById("create").addEventListener("click", function(e){
+  e.preventDefault()
+  isNumberMatch()
+  createOrder()
+});
