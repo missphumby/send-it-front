@@ -23,7 +23,7 @@ const login = (event) => {
       if (res.message == "Authorization failed" && password != "" ){
         alert('Unauthorized User, please enter a valid email address')
        }
-       else if(res.msg == "incorrect password"  ){
+       else if(res.error ){
         alert('Incorrect password, please enter a valid password')
         
        }
