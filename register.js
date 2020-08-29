@@ -73,7 +73,7 @@ function isEmailMatch(){
   var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   if (email.value.match(mailformat)){
           return true;
-//   }
+
   }
   else{
     toastr.warning("Sorry, you have entered an invalid email address!")
