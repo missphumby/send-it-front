@@ -33,7 +33,7 @@ const createOrder = (event) => {
       console.log("userid", userId);
       console.log(res);
       if (res.data) {
-        alert("parcel created successfully!");
+        toastr.success("parcel created successfully!");
         window.location.href = "./profile.html";
       } else if (res.error) {
         console.log(res.error);
@@ -47,11 +47,11 @@ function isNumberMatch(){
   if(mobile.value.match(numbers) && mobile.value.length == 11)
   {return true;}
   else if(mobile.value.length < 11 || mobile.value.length > 11){
-     alert("Phone number must be 11 digits")
+     toastr.warning("Phone number must be 11 digits")
      return false;
   }
   else{
-  alert('Recipient Mobile-Number must have numeric characters only');
+  toastr.warning('Recipient Mobile-Number must have numeric characters only');
   mobile.focus();
   return false;}
   }

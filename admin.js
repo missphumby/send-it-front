@@ -93,7 +93,7 @@ const locPrompt = (orderId) => {
       .then((res) => {
         console.log(res);
         if (res.success) {
-          alert("Location changed successfully!");
+          toastr.success("Location changed successfully!");
           console.log;
           location.reload();
         }
@@ -131,7 +131,7 @@ const locPrompt = (orderId) => {
       .then((res) => {
         console.log(res);
         if (res.success) {
-          alert("order deleted successfuly");
+          toastr.success("order deleted successfuly");
           location.reload();
         } else if (res.error) {
           console.log(res.error);
@@ -177,7 +177,7 @@ const locPrompt = (orderId) => {
       .then((res) => {
         console.log(res);
         if (res.success) {
-          alert("parcel status successfully changed!");
+          toastr.success("parcel status successfully changed!");
           console.log;
           location.reload();
         }

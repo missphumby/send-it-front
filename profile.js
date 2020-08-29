@@ -93,7 +93,7 @@ const renderTableData = (data, ordersTable) => {
       .then((res) => {
         console.log(res);
         if (res.success) {
-          alert("Destination changed successfully!");
+          toastr.success("Destination changed successfully!");
           console.log;
           location.reload();
         }
@@ -131,7 +131,7 @@ const renderTableData = (data, ordersTable) => {
       .then((res) => {
         console.log(res);
         if (res.success) {
-          alert("order deleted successfuly");
+          toastr.success("order deleted successfuly");
           location.reload();
         } else if (res.error) {
           console.log(res.error);

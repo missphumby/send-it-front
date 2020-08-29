@@ -14,6 +14,7 @@
     headers: {
       "content-type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -26,8 +27,9 @@
     .then((res) => {
       console.log(res);
       if(res.message == "mail exists"){
-       alert('mail exists')
+        toastr.error('Mail exists')
        email.focus()
+       return false
       }
       else if (res.token) {
         const { _id } = res.user;
@@ -42,13 +44,13 @@
           .then((res) => {
             console.log(res);
             if (res.success) {
-              alert('user created successfully')
+              toastr.success('user created successfully')
               localStorage.setItem("firstname", res.data.firstname);
               localStorage.setItem("userId", res.data._id);
               window.location.href = "./profile.html";
             } else if (res.error) {
               console.log("error", res.err);
-             alert('please enter the correct email and password')
+              toastr.error(res.err)
             }
           })
           .catch((err) => console.log("error occurred", err));
@@ -67,18 +69,17 @@ if (firstname.value === "" || lastname.value === "" || password.value === "" || 
 };
 
 function isEmailMatch(){
-  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   if (email.value.match(mailformat)){
-      password.focus()
-      return true
-  }else if(email.value.length < 0 || email.value === ""){
-alert('email cannot be empty')
+          return true;
+//   }
   }
   else{
-      alert("You have entered an invalid email address!")
+    toastr.warning("Sorry, you have entered an invalid email address!")
       email.focus()
       // location.reload()
-      return false;
+       return false;
   }
   
 };
@@ -86,7 +87,7 @@ alert('email cannot be empty')
 
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
-  isFieldEmpty()
+  // isFieldEmpty()
   isEmailMatch()
   submit()
 });
