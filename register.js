@@ -71,9 +71,11 @@ if (firstname.value === "" || lastname.value === "" || password.value === "" || 
 function isEmailMatch(){
   // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  if (email.value.match(mailformat && email.value != "")){
+  if (email.value.match(mailformat)){
           return true;
 
+  }else if (email.value === ""){
+return;
   }
   else{
     toastr.warning("Sorry, you have entered an invalid email address!")
