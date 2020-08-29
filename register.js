@@ -71,7 +71,7 @@ if (firstname.value === "" || lastname.value === "" || password.value === "" || 
 function isEmailMatch(){
   // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  if (email.value.match(mailformat)){
+  if (email.value.match(mailformat && email.value != "")){
           return true;
 
   }
