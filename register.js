@@ -14,7 +14,7 @@
     headers: {
       "content-type": "application/json",
     },
-    // credentials: "include",
+    credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -50,7 +50,7 @@
               window.location.href = "./profile.html";
             } else if (res.error) {
               console.log("error", res.err);
-              toastr.error("Authorization failed")
+              toastr.error("failed")
             }
           })
           .catch((err) => console.log("error occurred", err));
@@ -61,12 +61,12 @@
     .catch((err) => console.log("err occured", err));
 };
 
-function isFieldEmpty(){
-if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "") {
-  alert("please enter the field");
-  return false;
-}
-};
+// function isFieldEmpty(){
+// if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "") {
+//   alert("please enter the field");
+//   return false;
+// }
+// };
 
 function isEmailMatch(){
   // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -87,6 +87,6 @@ function isEmailMatch(){
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
   // isFieldEmpty()
-  isEmailMatch()
+  // isEmailMatch()
   submit()
 });
