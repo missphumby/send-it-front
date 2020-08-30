@@ -14,7 +14,7 @@
     headers: {
       "content-type": "application/json",
     },
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -50,7 +50,7 @@
               window.location.href = "./profile.html";
             } else if (res.error) {
               console.log("error", res.err);
-              toastr.error(res.err)
+              toastr.error("Authorization failed")
             }
           })
           .catch((err) => console.log("error occurred", err));
@@ -73,12 +73,9 @@ function isEmailMatch(){
   var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   if (email.value.match(mailformat)){
           return true;
-
-  }else if (email.value === ""){
-return;
   }
   else{
-    toastr.warning("Sorry, you have entered an invalid email address!")
+    toastr.warning("please enter a valid email address!")
       email.focus()
       // location.reload()
        return false;
