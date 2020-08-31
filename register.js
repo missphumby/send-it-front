@@ -12,7 +12,8 @@
   fetch(`${url}/signup`, {
     method: "POST",
     headers: {
-      // "content-type": "application/json",
+      Accept: "*/*",
+      "Content-Type": "text/plain",
     },
     credentials: "include",
     body: JSON.stringify({
