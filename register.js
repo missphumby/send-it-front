@@ -10,6 +10,7 @@
     // e.preventDefault()
 
   fetch(`${url}/signup`, {
+    mode: "no-cors",
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
