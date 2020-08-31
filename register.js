@@ -75,8 +75,8 @@ function isEmailMatch(){
           return true;
   }
   else{
-    toastr.error("please a valid email address!")
-      email.focus()
+    toastr.warning("Sorry, you have entered an invalid email address!")
+      // email.focus()
       // location.reload()
        return false;
   }
