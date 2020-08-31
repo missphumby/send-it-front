@@ -12,8 +12,8 @@
   fetch(`${url}/signup`, {
     method: "POST",
     headers: {
-      Accept: "*/*",
-      "Content-Type": "text/plain",
+      Accept: "application/json, text/plain, */*",
+      "content-type": "application/json",
     },
     credentials: "include",
     body: JSON.stringify({
@@ -70,8 +70,8 @@ if (firstname.value === "" || lastname.value === "" || password.value === "" || 
 };
 
 function isEmailMatch(){
-  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  // var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  var mailformat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   if (email.value.match(mailformat)){
           return true;
   }

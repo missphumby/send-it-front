@@ -10,7 +10,7 @@ const login = (event) => {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
-      "Content-Type": "text/plain",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: document.getElementById("email").value,
