@@ -50,7 +50,7 @@
               window.location.href = "./profile.html";
             } else if (res.error) {
               console.log("error", res.err);
-              toastr.error("failed")
+              toastr.error(res.err)
             }
           })
           .catch((err) => console.log("error occurred", err));
@@ -61,12 +61,12 @@
     .catch((err) => console.log("err occured", err));
 };
 
-// function isFieldEmpty(){
-// if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "") {
-//   alert("please enter the field");
-//   return false;
-// }
-// };
+function isFieldEmpty(){
+if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "") {
+  alert("please enter the field");
+  return false;
+}
+};
 
 function isEmailMatch(){
   // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -75,7 +75,7 @@ function isEmailMatch(){
           return true;
   }
   else{
-    toastr.warning("please enter a valid email address!")
+    toastr.error("please a valid email address!")
       email.focus()
       // location.reload()
        return false;
@@ -87,6 +87,6 @@ function isEmailMatch(){
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
   // isFieldEmpty()
-  // isEmailMatch()
+  isEmailMatch()
   submit()
 });
