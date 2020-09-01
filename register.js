@@ -113,7 +113,7 @@ function isNumberMatch(){
   // // toastr.error('Recipient Mobile-Number must have numeric characters only');
   // // mobile.focus();
   // return false;}
-  }
+  };
 
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
