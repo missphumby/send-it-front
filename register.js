@@ -1,4 +1,4 @@
-const myForm = documents.getElementById("registration-form")
+const myForm = document.getElementById("registration-form")
   const firstname = document.getElementById("firstname");
   const lastname = document.getElementById("lastname");
   const email = document.getElementById("email");
