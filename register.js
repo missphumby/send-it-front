@@ -7,8 +7,8 @@
   const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
-  const submitForm = (event) => {
-      event.preventDefault()
+  function submitForm() {
+    //e.preventDefault()
 
   fetch(`${url}/signup`, {
     // mode: "no-cors",
@@ -115,8 +115,8 @@ function isNumberMatch(){
   // return false;}
   };
 
-// document.getElementById("register").addEventListener("click", function(e){
-//   e.preventDefault();
-//   // isFieldEmpty()
-//   submit()
-// });
+document.getElementById("register").addEventListener("click", function(e){
+  e.preventDefault();
+  // isFieldEmpty()
+  submitForm()
+});
