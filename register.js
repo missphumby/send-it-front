@@ -17,7 +17,7 @@
       Accept: "application/json, text/plain, */*",
       "content-type": "application/json",
     },
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
