@@ -45,13 +45,14 @@ const createOrder = (event) => {
 function isNumberMatch(){
   let numbers = /^[0-9]+$/;
   if(mobile.value.match(numbers) && mobile.value.length == 11)
-  {return true;}
+  {return true;
+  }
   else if(mobile.value.length < 11 || mobile.value.length > 11){
-     toastr.warning("Phone number must be 11 digits")
+     toastr.error("Phone number must be valid")
      return false;
   }
   else{
-  toastr.warning('Recipient Mobile-Number must have numeric characters only');
+  toastr.error('Recipient Mobile-Number must have numeric characters only');
   mobile.focus();
   return false;}
   }

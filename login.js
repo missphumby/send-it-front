@@ -21,7 +21,7 @@ const login = (event) => {
     .then((res) => {
 
       if (res.message == "Authorization failed" && password != "" ){
-        toastr.warning('Unauthorized User, please enter a valid email address')
+        toastr.info('Unauthorized User, please enter a valid email address')
        }
        else if(res.error ){
         toastr.error('Incorrect password, please enter a valid password')

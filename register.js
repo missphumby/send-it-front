@@ -4,25 +4,27 @@
   const email = document.getElementById("email");
   const mobile = document.getElementById("phone-no");
   const password = document.getElementById("password");
+  const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
   function submit() {
-    // e.preventDefault()
+    //  e.preventDefault()
 
   fetch(`${url}/signup`, {
-    mode: "no-cors",
+    // mode: "no-cors",
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
       "content-type": "application/json",
     },
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
       email: email.value,
       mobile: mobile.value,
       password: password.value,
+      confirm_password: confirm_password.value
     }),
   })
     .then((res) => res.json())
@@ -85,10 +87,37 @@ function isEmailMatch(){
   
 };
 
+function check_pass() {
+  if (password.value == confirm_password.value) {
+      // document.getElementById('register').disabled = false;
+      return true;
+  } else {
+      // document.getElementById('register').disabled = true;
+      alert("password does not match")
+      return false;
+  }
+}
+
+function isNumberMatch(){
+  let numbers = /^[0-9]+$/;
+  if(mobile.value.match(numbers) && mobile.value.length == 11)
+  {return true;
+  }
+  else if(mobile.value.length < 11 && mobile.value.length != 0 || mobile.value.length > 11){
+     toastr.error("Phone number must be valid")
+     mobile.focus()
+     return false;
+     
+  }
+  // else if(mobile.value == ""){
+  // // toastr.error('Recipient Mobile-Number must have numeric characters only');
+  // // mobile.focus();
+  // return false;}
+  }
 
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
   // isFieldEmpty()
-  isEmailMatch()
+
   submit()
 });

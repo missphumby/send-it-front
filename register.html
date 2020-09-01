@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/register.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <title>Sendit register</title>
 </head>
@@ -29,19 +29,21 @@
     </header>
     <section class="form-section">
         <div>
-          <form id="registration-form" >
+          <form id="registration-form" data-toggle="validator" role="form" >
             <h2>REGISTER</h2>
             <h3>Firstname *</h3>
             <input type="text" id="firstname" autofocus class="field" required /><br>
             <h3>Lastname:</h3>
             <input type="text" id="lastname" class="field" /><br>
             <h3>Email *</h3>
-            <input type="email" id="email" class="field" required /><br>
+            <input type="email" id="email" class="field" onchange="isEmailMatch()" required/><br>
             <h3>Mobile-no *</h3>
-            <input type="text" id="phone-no" class="field" required/ ><br>
+            <input type="text" id="phone-no" class="field" onchange="isNumberMatch()" required/ ><br>
             <h3>Password *</h3>
             <input type="password" id="password" class="field" required/><br>
-            <input type="submit" value="Submit" id="register" class="submit" href="profile.html" />
+            <h3>Confirm Password *</h3>
+            <input type="password" id="confirm_password" class="field" onchange="check_pass()" required/><br>
+            <button type="submit" value="Submit" id="register" class="submit" onclick="return check_pass()" href="profile.html">Submit</button>
           </form>
           <p>Already have an account? <a href="./login.html" id="login">Login</a></p>
         </div>
