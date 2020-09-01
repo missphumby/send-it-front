@@ -7,8 +7,8 @@
   const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
-  function submitForm(e) {
-      e.preventDefault()
+  const submitForm = (event) => {
+      event.preventDefault()
 
   fetch(`${url}/signup`, {
     // mode: "no-cors",
