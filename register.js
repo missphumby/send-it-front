@@ -7,8 +7,8 @@
   const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
-  function submit() {
-    //  e.preventDefault()
+  function submitForm() {
+      e.preventDefault()
 
   fetch(`${url}/signup`, {
     // mode: "no-cors",
@@ -17,7 +17,7 @@
       Accept: "application/json, text/plain, */*",
       "content-type": "application/json",
     },
-    // credentials: "include",
+    credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -66,7 +66,7 @@
 };
 
 function isFieldEmpty(){
-if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "") {
+if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "" || password.value === ""|| confirm_password.value === ""){
   alert("please enter the field");
   return false;
 }
@@ -115,8 +115,8 @@ function isNumberMatch(){
   // return false;}
   };
 
-document.getElementById("register").addEventListener("click", function(e){
-  e.preventDefault();
-  // isFieldEmpty()
-  submit()
-});
+// document.getElementById("register").addEventListener("click", function(e){
+//   e.preventDefault();
+//   // isFieldEmpty()
+//   submit()
+// });
