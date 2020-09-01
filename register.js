@@ -1,4 +1,4 @@
-
+const myForm = documents.getElementById("registration-form")
   const firstname = document.getElementById("firstname");
   const lastname = document.getElementById("lastname");
   const email = document.getElementById("email");
@@ -7,8 +7,8 @@
   const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
-  function submit() {
-    //  e.preventDefault()
+  const submitForm = (event)=> {
+      event.preventDefault()
 
   fetch(`${url}/signup`, {
     // mode: "no-cors",
@@ -17,7 +17,7 @@
       Accept: "application/json, text/plain, */*",
       "content-type": "application/json",
     },
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -115,8 +115,4 @@ function isNumberMatch(){
   // return false;}
   };
 
-document.getElementById("register").addEventListener("click", function(e){
-  e.preventDefault();
-  // isFieldEmpty()
-  submit()
-});
+myForm.addEventListener("submit", submitForm)
