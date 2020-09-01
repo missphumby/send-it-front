@@ -17,7 +17,7 @@
       Accept: "application/json, text/plain, */*",
       "content-type": "application/json",
     },
-    // credentials: "include",
+    credentials: "include",
     body: JSON.stringify({
       firstname: firstname.value,
       lastname: lastname.value,
@@ -118,6 +118,5 @@ function isNumberMatch(){
 document.getElementById("register").addEventListener("click", function(e){
   e.preventDefault();
   // isFieldEmpty()
-
   submit()
 });
