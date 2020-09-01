@@ -7,7 +7,7 @@
   const confirm_password = document.getElementById('confirm_password')
   const url = "https://send-it-app.herokuapp.com";
 
-  function submitForm() {
+  function submitForm(e) {
       e.preventDefault()
 
   fetch(`${url}/signup`, {
