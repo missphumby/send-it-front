@@ -38,11 +38,14 @@
             <h3>Email *</h3>
             <input type="email" id="email" class="field" onchange="isEmailMatch()" required/><br>
             <h3>Mobile-no *</h3>
-            <input type="text" id="phone-no" class="field" onchange="isNumberMatch()" required/><br>
+            <input type="tel" id="phone-no" class="field"placeholder="Enter phone Number" 
+            pattern="\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$" 
+            onchange="" 
+            required/><span class="validity" style="margin-top: 6px">Format: +1234......<span style="font-size: 25px; color: red;">x</span></span><br>
             <h3>Password *</h3>
-            <input type="password" id="password" class="field" required/><br>
+            <input type="password" id="password" minlength="6" class="field" required/><br>
             <h3>Confirm Password *</h3>
-            <input type="password" id="confirm_password" class="field" onchange="return check_pass()" required/><br>
+            <input type="password" id="confirm_password"  minlength="6" class="field" onchange="return check_pass()" required/><br>
             <button type="submit" value="Submit" id="register" class="submit" href="profile.html">Submit</button>
           </form>
           <p>Already have an account? <a href="./login.html" id="login">Login</a></p>

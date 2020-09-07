@@ -6,13 +6,13 @@ const userId = localStorage.getItem("userId");
 const url = "https://send-it-app.herokuapp.com";
 
 // preventing unauthorised users from accessing the page
-if(!token){
+if(!token && !userId){
   window.location.href = './login.html';
 }
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
 
 const createOrder = (event) => {
-  // event.preventDefault();
+   event.preventDefault();
 
   fetch(`${url}/order`, {
     method: "POST",
@@ -22,9 +22,9 @@ const createOrder = (event) => {
     },
     body: JSON.stringify({
       userId,
-      pickup: document.getElementById("pickup").value,
-      destination: document.getElementById("dest").value,
-      recName: document.getElementById("name").value,
+      pickup: document.getElementById("pickup").value.toUpperCase(),
+      destination: document.getElementById("dest").value.toUpperCase(),
+      recName: document.getElementById("name").value.toUpperCase(),
       recMobileNo: document.getElementById("mobile").value,
     }),
   })
@@ -57,9 +57,12 @@ function isNumberMatch(){
   return false;}
   }
 
+function cancelOrd(){
+  document.getElementById("pickup").value = ""
+  document.getElementById("dest").value = ""
+  document.getElementById("name").value = ""
+  document.getElementById("mobile").value = ""
 
-document.getElementById("create").addEventListener("click", function(e){
-  e.preventDefault()
-  isNumberMatch()
-  createOrder()
-});
+}
+
+document.getElementById("registration-form").addEventListener("submit", createOrder)

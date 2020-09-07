@@ -4,7 +4,7 @@ const userId = localStorage.getItem("userId");
 const url = "https://send-it-app.herokuapp.com";
 
 //preventing unauthorised users from accessing the page
-if (!token) {
+if (!token && !userId) {
   window.location.href = "./login.html";
 }
 
@@ -46,7 +46,7 @@ fetch(`${url}/order/${userId}`, {
         .length;
       document.getElementById("delivered").innerHTML = `${delivered}`;
       //number of cancelled items
-      const cancelled = result.data.filter((val) => val.status === "cancelled")
+      const cancelled = result.data.filter((val) => val.status === "Cancelled")
         .length;
       document.getElementById("cancelled").innerHTML = `${cancelled}`;
     }
@@ -61,8 +61,8 @@ const renderTableData = (data, ordersTable) => {
                           <td>${parcel.recName}</td>
                           <td>${parcel.recMobileNo}</td>
                           <td class="status">${parcel.status}</td>
-                          <td><a id="changeDest" orderid="${parcel.orderId}" class="changeDest"><i class="fa fa-edit"></i></a></td>
-                          <td><a id="cancelOrder" orderid="${parcel.orderId}" class="cancelOrder"><i class="fa fa-trash"></i></a></td>
+                          <td><button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white changeDest" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                          <td><button id="cancelOrder" orderid="${parcel.orderId}" class="cancelOrder"><i class="fa fa-trash"></i></button></td>
                            `;
     ordersTable.append(parcelRow);
   });
@@ -70,14 +70,29 @@ const renderTableData = (data, ordersTable) => {
   //edit order
   const destPrompt = (orderId) => {
     console.log("order", orderId);
-    const newDest = prompt("Enter a new Destination address");
-    if (newDest !== "" && newDest !== null) {
-      changeDestination(newDest, orderId);
-    } else {
-      return;
-    }
-  };
+    const newDest = document.getElementById('newDest')
+    const saveChanges = document.getElementById('saveEdit')
+    console.log(saveChanges)
+    console.log(newDest)
+    saveChanges.addEventListener('click', function(){
+if (newDest.value !== "") {
+  changeDestination(newDest, orderId);
+  console.log(newDest.value)
+} else {
+  return;
+}
+    })
 
+// $('#saveEdit').click(function() {
+//   if(newDest != ""){
+//   changeDestination(newDest, orderId);
+//   $('#editModal').modal('hide');
+//   }else{
+//     return;
+//   }
+// });
+  };
+  
   const changeDestination = function (newDest, orderId) {
     fetch(`${url}/order/${orderId}`, {
       method: "PATCH",
@@ -86,7 +101,7 @@ const renderTableData = (data, ordersTable) => {
         //   Authorization: token
       },
       body: JSON.stringify({
-        destination: newDest,
+        destination: newDest.value.toUpperCase()
       }),
     })
       .then((res) => res.json())
@@ -111,42 +126,70 @@ const renderTableData = (data, ordersTable) => {
   );
 
   //cancel order
-
-  const deletePrompt = (orderId) => {
-    const deleteValue = confirm("Are you sure you want to cancel this order");
-    if (deleteValue == true) {
-      deleteOrder(orderId);
+  const cancelPrompt = (orderId) => {
+    console.log("order", orderId);
+    if(confirm('Are you sure you want to cancel this order?') === true) {
+      cancelOrder(orderId);
+      // disabledBtn(orderId)
     } else {
+      return;
     }
   };
-
-  const deleteOrder = (orderId) => {
-    fetch(`${url}/order/${orderId}`, {
-      method: "DELETE",
+  const cancelOrder = function (orderId) {
+    fetch(`${url}/order/${orderId}/cancel`, {
+      method: "PATCH",
       headers: {
         "Content-type": "application/json",
+        //   Authorization: token
       },
+      body: JSON.stringify({
+        status
+      }),
     })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
         if (res.success) {
-          toastr.success("order deleted successfuly");
+          toastr.success("Order successfully cancelled!");
           location.reload();
-        } else if (res.error) {
-          console.log(res.error);
-        }
+          // disabledBtn()
+                  }
       })
       .catch((err) => console.log("error occured", err));
   };
 
-  let deleteButton = document.getElementsByClassName("cancelOrder");
-  deleteButton = Array.from(deleteButton);
-  deleteButton.forEach((b) =>
-    b.addEventListener("click", (event) => {
+  let cancelButton = document.getElementsByClassName("cancelOrder");
+  cancelButton = Array.from(cancelButton);
+  cancelButton.forEach((b) =>b.addEventListener("click", (event) => {
       event.preventDefault();
       const orderId = b.getAttribute("orderid");
-      deletePrompt(orderId);
+      cancelPrompt(orderId);
     })
   );
-};
+
+disableBtn(changeButton)
+disableBtn(cancelButton)
+//   cancelButton.forEach((b) => {
+//     const tr = b.parentElement.parentElement.children[5];
+//  if(tr.innerText == "Cancelled"){
+//    b.disabled = true;
+//  }
+//   })
+
+//   changeButton.forEach((b) => {
+//     const tr = b.parentElement.parentElement.children[5];
+//  if(tr.innerText == "Cancelled"){
+//    b.disabled = true;
+//  }
+//   })
+
+ };
+
+ const disableBtn = (btnAction) => {
+  btnAction.forEach((b) => {
+    const tr = b.parentElement.parentElement.children[5];
+    if (tr.innerText == "Cancelled") {
+      b.disabled = true;
+    }
+  })
+}

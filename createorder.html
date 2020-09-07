@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/profile.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -53,9 +53,12 @@
                 </div>
                 <div class="form-group form-group-lg">
                     <label for="mobile" style="font-weight: lighter;">Recipient Mobile-Number</label>
-                    <input class="form-control" type="" id="mobile" name="mobile" required/>
+                    <input class="form-control" type="tel" id="mobile" name="mobile" 
+                    pattern="\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$"
+                    required/><span class="validity" style="margin-top: 6px; font-size: 15px;">Format: +1234......<span style="font-size: 25px; color: red;">x</span></span>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg" id="create">Create</button>
+                <button type="cancel" class="btn btn-danger btn-lg" id="cancel" onclick="cancelOrd()">Cancel</button>
             </form>
         </div>
     </div>

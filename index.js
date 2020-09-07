@@ -1,3 +1,9 @@
+const token = localStorage.getItem("token");
+
+if (token) {
+    window.location.href = "./profile.html";
+}
+
 (function(){
 const imgContainer = document.querySelector('.banner');
 const images = ["banner-1", "banner-2", "banner-3"]
@@ -16,3 +22,4 @@ if(counter < 0){
 setInterval(changeImage, 2000)
 
 })()
+

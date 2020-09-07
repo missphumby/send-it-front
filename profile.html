@@ -31,6 +31,8 @@
                             style="color: white; background-color: gray; padding: 5px" href="./createorder.html" >Create
                             Order</a></li>
                     <li><button class="btn btn-danger navbar-btn" id="logout">Log out</button></li>
+                    <li><a class="btn btn-default navbar-btn navbar-right active"
+                        style="color: white; background-color: skyblue; padding: 5px" href="./index.html" >Home</a></li>
                 </ul>
             </div>
         </nav><br>
@@ -48,6 +50,25 @@
                     <li class="list-group-item">Cancelled Orders: <span id="cancelled">0</span></li>
         
                 </ul><br><br>
+
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <input class="modalTextInput form-control" id="newDest" placeholder="Enter new Destination" />
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="saveEdit" class="saveEdit btn btn-primary" data-dismiss="modal">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 <table class="table table-responsive table-stripped table-hover table-lg">
                     <thead class="table-secondary">
