@@ -9,10 +9,19 @@
     <link rel="stylesheet" href="styles/profile.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+    <script>
+        const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+        //preventing unauthorised users from accessing the page
+    if (!token && !userId) {
+      window.location.href = "./login.html";
+    }
+    </script>
+    
 </head>
 
 <body>
@@ -28,7 +37,7 @@
                 <li class="active"><a href="#" id="nameBar">Name</a></li>
                 <li><a class="btn btn-default navbar-btn active" style="padding: 5px; color: white; background-color: gray;">Create
                         Order</a></li>
-                <li><button class="btn btn-danger navbar-btn">Log out</button></li>
+                <li><button class="btn btn-danger navbar-btn" id="logout">Log out</button></li>
             </ul>
          </div>
         </nav><br>
@@ -105,4 +114,18 @@
 
         <script src="./order.js"></script>
 </body>
+<script>
+    //Place Autocomplete Address Form 
+    function initAutocomplete() {
+      const pickup = document.getElementById('pickup');
+      const destination = document.getElementById('dest');
+
+      const autocompletePickup = new google.maps.places.Autocomplete(pickup);
+      const autocompleteDestination = new google.maps.places.Autocomplete(destination);
+
+    }
+  </script>
+  <script type="text/javascript" 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsCpECdOd6XCeKdReJj7YPQrfYVwzeKSI&libraries=places&callback=initAutocomplete"></script>
+
 </html>

@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/index.css">
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>  
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <title>Sendit app</title>
-</head>
-<body>
-  <script>
-    $(document).ready(function() {
-      // toastr.success('page loaded')
-    toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "500",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "show",
-        "hideMethod": "hide"
-    };
-});
+    <script>
+        const token = localStorage.getItem("token");
 
-// toasterOptions();
-</script>
+if (token) {
+  window.location.href = "./profile.html";
+}
+    </script>
+  </head>
+  <body>
+    <script>
+    
+
+      $(document).ready(function () {
+        // toastr.success('page loaded')
+        toastr.options = {
+          closeButton: false,
+          debug: false,
+          newestOnTop: false,
+          progressBar: true,
+          positionClass: "toast-top-right",
+          preventDuplicates: true,
+          onclick: null,
+          showDuration: "500",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "show",
+          hideMethod: "hide",
+        };
+      });
+
+      // toasterOptions();
+    </script>
 
     <header>
       <div class="headSection">
@@ -50,7 +65,7 @@
         </nav>
       </div>
     </header>
-  
+
     <section class="banner">
       <div>
         <p>Building a stressless World through Speedy and Perfect Delivery..</p>
@@ -58,35 +73,40 @@
       </div>
     </section>
     <footer>
-        <div class="footerSection">
-            <ul>
-              <li>
-                <h2>About us</h2>
-                <p> SendIT is a parcel/courier service that delivers orders perfectly with utmost speed</p>
-              </li>
-              <li>
-                <h2>Office Address</h2>
-                <p>No 4, Okobaba street, Ebute-metta, Lagos State Nigeria</p>
-              </li>
-              <li>
-                <h2>Working Hours</h2>
-                <p>Weekdays: 8am - 6pm</p>
-                <p>Weekends: 10am - 4pm</p>
-              </li>
-              <li id="moreinfo">
-                <h2>MORE INFO</h2><br>
-                <p><a href="index.html">Careers</a></p>
-                <p><a href="index.html">Help Center</a></p>
-                <p><a href="index.html">Terms&Conditions</a></p>
-                <p><a href="index.html">Privacy Policy</a></p>
-              </li>
-            </ul>
-        </div>
-        <div class="copyrights">
-            <img src="imgs/footerlogo.png" />Copyright &copy; 2019. All rights reserved!
-        </div>
-      </footer>
-    
-      <script src="./index.js"></script>
-    </body>
-      </html>
+      <div class="footerSection">
+        <ul>
+          <li>
+            <h2>About us</h2>
+            <p>
+              SendIT is a parcel/courier service that delivers orders perfectly
+              with utmost speed
+            </p>
+          </li>
+          <li>
+            <h2>Office Address</h2>
+            <p>No 4, Okobaba street, Ebute-metta, Lagos State Nigeria</p>
+          </li>
+          <li>
+            <h2>Working Hours</h2>
+            <p>Weekdays: 8am - 6pm</p>
+            <p>Weekends: 10am - 4pm</p>
+          </li>
+          <li id="moreinfo">
+            <h2>MORE INFO</h2>
+            <br />
+            <p><a href="index.html">Careers</a></p>
+            <p><a href="index.html">Help Center</a></p>
+            <p><a href="index.html">Terms&Conditions</a></p>
+            <p><a href="index.html">Privacy Policy</a></p>
+          </li>
+        </ul>
+      </div>
+      <div class="copyrights">
+        <img src="imgs/footerlogo.png" />Copyright &copy; 2019. All rights
+        reserved!
+      </div>
+    </footer>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

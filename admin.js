@@ -46,7 +46,7 @@ fetch(`${url}/order`, {
       const delivered = result.data.filter(val => val.status === "delivered").length;
       document.getElementById("delivered").innerHTML = `${delivered}`;
       //number of cancelled items
-      const cancelled = result.data.filter(val => val.status === "cancelled").length;
+      const cancelled = result.data.filter(val => val.status === "Cancelled").length;
       document.getElementById("cancelled").innerHTML = `${cancelled}`;
     }
   });

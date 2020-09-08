@@ -1,15 +1,23 @@
 const mobile = document.getElementById('mobile');
 console.log(mobile)
 const firstname = localStorage.getItem("firstname");
-const token = localStorage.getItem("token");
-const userId = localStorage.getItem("userId");
+// const token = localStorage.getItem("token");
+// const userId = localStorage.getItem("userId");
 const url = "https://send-it-app.herokuapp.com";
 
 // preventing unauthorised users from accessing the page
-if(!token && !userId){
-  window.location.href = './login.html';
-}
+// if(!token && !userId){
+//   window.location.href = './login.html';
+// }
 document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
+
+//handling logout
+const logout = document.getElementById("logout");
+
+logout.addEventListener("click", function () {
+  localStorage.clear();
+  window.location.href = "./index.html";
+});
 
 const createOrder = (event) => {
    event.preventDefault();
