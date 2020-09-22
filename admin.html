@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -32,8 +32,8 @@
             </div>
         </nav><br>
 
-        <div class="container">
-            <div class="profile">
+        <div class="container-fluid row">
+            <div class=" profile">
                 
                 <ul class="list-group col-sm-4" style="text-align: center;">
                     <li class="list-group-item" style="background-color: gainsboro;">
@@ -43,20 +43,25 @@
                     <li class="list-group-item">Orders in transit: <span id="transit">0</span></li>
                     <li class="list-group-item">Delivered: <span id="delivered">0</span></li>
                     <li class="list-group-item">Cancelled Orders: <span id="cancelled">0</span></li>
-        
-                </ul>
-
-                
+                </ul>  
 
                  <h1  class="col-sm-12" style="text-align: center;">List of Orders</h1>
-
+                 <div class="filter text-center mt-5" id="new" style="display: none; margin:0 auto"> 
+                    <select id="select-filter" style="width: 200px; padding: 8px;">
+                        <option value="">Filter Status</option>
+                        <option value="In-transit">In-transit</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>   
+                    </div>
+                    
                 <table class="table table-responsive table-stripped table-hover table-lg">
-                    <thead class="table-secondary">
+                    <thead class="table-secondary" >
                         <tr>
                             <th scope="col">Order Id</th>
-                            <th scope="col">Pickup location</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Price NGN</th>
+                            <th scope="col" class="text-center">Pickup Location</th>
+                            <th scope="col" class="text-center">Destination</th>
+                            <th scope="col">Current Location</th>
                             <th scope="col">Recepient name</th>
                             <th scope="col">Recepient Mobile number</th>
                             <th scope="col">Order Status</th>

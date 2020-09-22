@@ -40,10 +40,10 @@ fetch(`${url}/order`, {
       //total no of orders
       document.getElementById("ordersLength").innerHTML = `${result.data.length}`;
       //Number of items in transit
-      const transitOrders = result.data.filter(val => val.status === "In transit").length;
+      const transitOrders = result.data.filter(val => val.status === "In-transit").length;
       document.getElementById("transit").innerHTML = `${transitOrders}`;
       //number of delivered items
-      const delivered = result.data.filter(val => val.status === "delivered").length;
+      const delivered = result.data.filter(val => val.status === "Delivered").length;
       document.getElementById("delivered").innerHTML = `${delivered}`;
       //number of cancelled items
       const cancelled = result.data.filter(val => val.status === "Cancelled").length;
@@ -57,7 +57,7 @@ const renderTableData = (data, ordersTable) => {
     parcelRow.innerHTML = `<th scope="row">${parcel.orderId}</th>
                           <td class="location">${parcel.pickup}</td>
                           <td>${parcel.destination}</td>
-                          <td>${parcel.price}</td>
+                          <td>${parcel.current_loc}</td>
                           <td>${parcel.recName}</td>
                           <td>${parcel.recMobileNo}</td>
                           <td><h6 class="status">${parcel.status}</h6><span class="editStatus" orderid="${parcel.orderId}"><i class="fa fa-edit"></i></span></td>
@@ -86,7 +86,7 @@ const locPrompt = (orderId) => {
         //   Authorization: token
       },
       body: JSON.stringify({
-        pickup: newLocation,
+        current_loc: newLocation,
       }),
     })
       .then((res) => res.json())
@@ -154,12 +154,16 @@ const locPrompt = (orderId) => {
   
   const statusPrompt = (orderId) => {
     console.log("order", orderId);
-    const newStatus = prompt("Enter a new status");
-    if (newStatus !== "" && newStatus !== null) {
+    const statusOrder = document.getElementById('new')
+    statusOrder.style.display = "block"
+    const statusSelect = document.getElementById('select-filter')
+    console.log(statusSelect)
+    statusSelect.addEventListener('change', function(e){
+      let newStatus = statusSelect.value;
+      console.log(statusSelect.value)
       changeStatus(newStatus, orderId);
-    } else {
-      return;
-    }
+      
+    })
   };
 
   const changeStatus = function (newStatus, orderId) {
@@ -184,6 +188,8 @@ const locPrompt = (orderId) => {
       })
       .catch((err) => console.log("error occured", err));
   };
+
+  
 
   let statusButton = document.getElementsByClassName("editStatus");
   statusButton = Array.from(statusButton);

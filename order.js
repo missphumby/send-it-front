@@ -74,3 +74,6 @@ function cancelOrd(){
 }
 
 document.getElementById("registration-form").addEventListener("submit", createOrder)
+document.getElementById('cancel').addEventListener('click', function(e){
+  window.location.href = './profile.html'
+})

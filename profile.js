@@ -53,6 +53,7 @@ const renderTableData = (data, ordersTable) => {
                           <td>${parcel.destination}</td>
                           <td>${parcel.recName}</td>
                           <td>${parcel.recMobileNo}</td>
+                          <td>${parcel.current_loc}</td>
                           <td class="status">${parcel.status}</td>
                           <td><button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white changeDest" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                           <td><button id="cancelOrder" orderid="${parcel.orderId}" class="cancelOrder"><i class="fa fa-trash"></i></button></td>
