@@ -77,14 +77,6 @@ if (newDest.value !== "") {
 }
     })
 
-// $('#saveEdit').click(function() {
-//   if(newDest != ""){
-//   changeDestination(newDest, orderId);
-//   $('#editModal').modal('hide');
-//   }else{
-//     return;
-//   }
-// });
   };
   
   const changeDestination = function (newDest, orderId) {
@@ -181,7 +173,7 @@ disableBtn(cancelButton)
 
  const disableBtn = (btnAction) => {
   btnAction.forEach((b) => {
-    const tr = b.parentElement.parentElement.children[5];
+    const tr = b.parentElement.parentElement.children[6];
     if (tr.innerText == "Cancelled") {
       b.disabled = true;
     }

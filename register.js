@@ -67,7 +67,7 @@ const myForm = document.getElementById("registration-form")
 
 function isFieldEmpty(){
 if (firstname.value === "" || lastname.value === "" || password.value === "" || mobile.value === "" || password.value === ""|| confirm_password.value === ""){
-  alert("please enter the field");
+  alert("please enter the feld");
   return false;
 }
 };

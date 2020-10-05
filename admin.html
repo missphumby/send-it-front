@@ -13,7 +13,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+    <style>
+        .modal { z-index: 1001 !important;} 
+        .modal-backdrop {z-index: 1000 !important;}
+        .pac-container {z-index: 1055 !important;}
+        </style>
+    
 </head>
 
 <body>
@@ -45,15 +50,54 @@
                     <li class="list-group-item">Cancelled Orders: <span id="cancelled">0</span></li>
                 </ul>  
 
-                 <h1  class="col-sm-12" style="text-align: center;">List of Orders</h1>
-                 <div class="filter text-center mt-5" id="new" style="display: none; margin:0 auto"> 
-                    <select id="select-filter" style="width: 200px; padding: 8px;">
-                        <option value="">Filter Status</option>
-                        <option value="In-transit">In-transit</option>
-                        <option value="Delivered">Delivered</option>
-                        <option value="Cancelled">Cancelled</option>
-                    </select>   
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Edit Current location</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <input class="modalTextInput form-control" id="newLoc" placeholder="Enter new Locaation" />
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="saveEdit" class="saveEdit btn btn-primary" data-dismiss="modal">Save changes</button>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+
+                  <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Edit Current Status</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="new">
+                            <select id="select-filter" style="width: 200px; padding: 8px;">
+                                <option value="">Filter Status</option>
+                                <option value="In-transit">In-transit</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>   
+                        </div>
+                          <!-- <input class="modalTextInput form-control" id="newLoc" placeholder="Enter new Locaation" /> -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="saveEdit" class="saveEdit btn btn-primary" data-dismiss="modal">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                 <h1  class="col-sm-12" style="text-align: center;">List of Orders</h1>
                     
                 <table class="table table-responsive table-stripped table-hover table-lg">
                     <thead class="table-secondary" >
@@ -120,5 +164,17 @@
     <script src="./admin.js"></script>
  
 </body>
+<script>
+//Place Autocomplete Address Form 
+    function initAutocomplete() {
+      const newdestination = document.getElementById('newLoc');
+
+      const autocompleteNewdestination = new google.maps.places.Autocomplete(newdestination);
+
+    }
+  </script>
+  <script type="text/javascript" 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsCpECdOd6XCeKdReJj7YPQrfYVwzeKSI&libraries=places&callback=initAutocomplete"></script>
+
 
 </html>

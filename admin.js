@@ -60,55 +60,64 @@ const renderTableData = (data, ordersTable) => {
                           <td>${parcel.current_loc}</td>
                           <td>${parcel.recName}</td>
                           <td>${parcel.recMobileNo}</td>
-                          <td><h6 class="status">${parcel.status}</h6><span class="editStatus" orderid="${parcel.orderId}"><i class="fa fa-edit"></i></span></td>
-                          <td><a id="changeDest" class="changeLoc" orderid="${parcel.orderId}"><i class="fa fa-edit"></i></a></td>
+                          <td><h6 class="status">${parcel.status}</h6><span <button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white editStatus" data-toggle="modal" data-target="#statusModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></span></td>
+                          <td><button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white changeLoc" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                           <td><a id="cancelOrder" class="cancelOrder" orderid="${parcel.orderId}"><i class="fa fa-trash"></i></a></td>
                            `;
     ordersTable.append(parcelRow);
   });
 
-//edit location
-const locPrompt = (orderId) => {
-    console.log("order", orderId);
-    const newLocation = prompt("Enter a new Location address");
-    if (newLocation !== "" && newLocation !== null) {
-      changeLocation(newLocation, orderId);
-    } else {
-      return;
-    }
-  };
 
-  const changeLocation = function (newLocation, orderId) {
-    fetch(`${url}/order/${orderId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-        //   Authorization: token
-      },
-      body: JSON.stringify({
-        current_loc: newLocation,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        if (res.success) {
-          toastr.success("Location changed successfully!");
-          console.log;
-          location.reload();
-        }
-      })
-      .catch((err) => console.log("error occured", err));
-  };
+//edit current location
+const destPrompt = (orderId) => {
+  console.log("order", orderId);
+  const newLoc = document.getElementById('newLoc')
+  const saveChanges = document.getElementById('saveEdit')
+  console.log(saveChanges)
+  console.log(newLoc)
+  saveChanges.addEventListener('click', function(){
+if (newLoc.value !== "") {
+changeDestination(newLoc, orderId);
+console.log(newDest.value)
+} else {
+return;
+}
+  })
 
-  let changeButton = document.getElementsByClassName("changeLoc");
-  changeButton = Array.from(changeButton);
-  changeButton.forEach((b) =>b.addEventListener("click", (event) => {
-      event.preventDefault();
-      const orderId = b.getAttribute("orderid");
-      locPrompt(orderId);
+};
+
+const changeDestination = function (newLoc, orderId) {
+  fetch(`${url}/order/${orderId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+      //   Authorization: token
+    },
+    body: JSON.stringify({
+      current_loc: newLoc.value.toUpperCase()
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      if (res.success) {
+        toastr.success("Location changed successfully!");
+        console.log;
+        location.reload();
+      }
     })
-  );
+    .catch((err) => console.log("error occured", err));
+};
+
+let changeButton = document.getElementsByClassName("changeLoc");
+changeButton = Array.from(changeButton);
+changeButton.forEach((b) =>b.addEventListener("click", (event) => {
+    event.preventDefault();
+    const orderId = b.getAttribute("orderid");
+    destPrompt(orderId);
+  })
+);
+
 
   //cancel order
 
@@ -154,8 +163,8 @@ const locPrompt = (orderId) => {
   
   const statusPrompt = (orderId) => {
     console.log("order", orderId);
-    const statusOrder = document.getElementById('new')
-    statusOrder.style.display = "block"
+    // const statusOrder = document.getElementById('new')
+    // statusOrder.style.display = "block"
     const statusSelect = document.getElementById('select-filter')
     console.log(statusSelect)
     statusSelect.addEventListener('change', function(e){

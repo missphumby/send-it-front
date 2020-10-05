@@ -66,12 +66,14 @@ border-top-right-radius: 10px;
 text-align: center;
 
 }
-.location{
-}
+
 footer{
     background-color: black;
     margin-top: 100px;
 }
+/* #editModal{
+    position: relative
+} */
 .row{
     padding-top: 20px;
     display: flex;
@@ -98,9 +100,7 @@ footer h5{
     margin-left: auto
 
 }
-#changeDest, .editStatus{
-    color: steelblue;
-}
+
 small{
     font-size: 14px;
 }

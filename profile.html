@@ -21,6 +21,12 @@ if (!token && !userId) {
   window.location.href = "./login.html";
 }
 </script>
+<style>
+    .modal { z-index: 1001 !important;} 
+    .modal-backdrop {z-index: 1000 !important;}
+    .pac-container {z-index: 1055 !important;}
+    </style>
+    
 </head>
 
 <body>
@@ -58,11 +64,11 @@ if (!token && !userId) {
         
                 </ul><br><br>
 
-                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Edit Order Destination</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -141,5 +147,17 @@ if (!token && !userId) {
 
     <script src="./profile.js"></script>
 </body>
+<script>
+    //Place Autocomplete Address Form 
+    function initAutocomplete() {
+      const newdestination = document.getElementById('newDest');
+
+      const autocompleteNewdestination = new google.maps.places.Autocomplete(newdestination);
+
+    }
+  </script>
+  <script type="text/javascript" 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsCpECdOd6XCeKdReJj7YPQrfYVwzeKSI&libraries=places&callback=initAutocomplete"></script>
+
 
 </html>
