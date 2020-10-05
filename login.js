@@ -66,5 +66,5 @@ const login = (event) => {
     })
 };
 
-document.getElementById("login").addEventListener("click", login);
+document.getElementById("registration-form").addEventListener("submit", login);
 
