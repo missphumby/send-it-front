@@ -28,7 +28,7 @@ fetch(`${url}/order/${userId}`, {
     } else {
       // result.data.sort((a, b) => a.id - b.id);
       renderTableData(result.data, ordersTable);
-
+console.log(result.data)
       //total no of orders
       document.getElementById("ordersLength").innerHTML = `${result.data.length}`;
       //Number of items in transit
@@ -113,6 +113,7 @@ if (newDest.value !== "") {
 
   //cancel order
   const cancelPrompt = (orderId) => {
+
     console.log("order", orderId);
     if(confirm('Are you sure you want to cancel this order?') === true) {
       cancelOrder(orderId);
@@ -174,7 +175,7 @@ disableBtn(cancelButton)
  const disableBtn = (btnAction) => {
   btnAction.forEach((b) => {
     const tr = b.parentElement.parentElement.children[6];
-    if (tr.innerText == "Cancelled") {
+    if (tr.innerText == "Cancelled" || tr.innerText === "Delivered") {
       b.disabled = true;
     }
   })
