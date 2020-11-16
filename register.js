@@ -2,6 +2,7 @@ const myForm = document.getElementById("registration-form")
   const firstname = document.getElementById("firstname");
   const lastname = document.getElementById("lastname");
   const email = document.getElementById("email");
+  const username = document.getElementById("username");
   const mobile = document.getElementById("phone-no");
   const password = document.getElementById("password");
   const confirm_password = document.getElementById('confirm_password')
@@ -22,6 +23,7 @@ const myForm = document.getElementById("registration-form")
       firstname: firstname.value,
       lastname: lastname.value,
       email: email.value,
+      username: username.value,
       mobile: mobile.value,
       password: password.value,
       confirm_password: confirm_password.value
@@ -99,7 +101,7 @@ function check_pass() {
 }
 
 function isNumberMatch(){
-  let numbers = /^[0-9]+$/;
+  
   if(mobile.value.match(numbers) && mobile.value.length == 11)
   {return true;
   }

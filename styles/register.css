@@ -51,6 +51,9 @@ li{
 a{
     text-decoration: none;
 }
+section{
+    min-height: 1000px;
+}
 .form-section{
     width: 100%;
     position: relative;

@@ -63,8 +63,7 @@ const renderTableData = (data, ordersTable) => {
                           <td><h6 class="status">${parcel.status}</h6><span <button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white editStatus" data-toggle="modal" data-target="#statusModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></span></td>
                           <td><button type="button" orderid="${parcel.orderId}" class="btn btn-sm btn-primary noUnderlineCustom text-white changeLoc" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
                           <td><a id="cancelOrder" class="cancelOrder" orderid="${parcel.orderId}"><i class="fa fa-trash"></i></a></td>
-                           `;
-    ordersTable.append(parcelRow);
+                           `;    ordersTable.append(parcelRow);
   });
 
 
