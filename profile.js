@@ -61,7 +61,6 @@ const renderTableData = (data, ordersTable) => {
     ordersTable.append(parcelRow);
   });
 
-  //edit order
   const destPrompt = (orderId) => {
     console.log("order", orderId);
     const newDest = document.getElementById('newDest')
@@ -78,7 +77,7 @@ if (newDest.value !== "") {
     })
 
   };
-  
+  document.getElementById('targetOutput ul:first').innerHTML = document.getElementsByName('username').value
   const changeDestination = function (newDest, orderId) {
     fetch(`${url}/order/${orderId}`, {
       method: "PATCH",

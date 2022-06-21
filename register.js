@@ -95,13 +95,13 @@ function check_pass() {
       return true;
   } else {
       // document.getElementById('register').disabled = true;
-      alert("password does not match")
+      toastr.error("password does not match")
       return false;
   }
 }
 
 function isNumberMatch(){
-  
+  var numbers = "^[0-9]*$"
   if(mobile.value.match(numbers) && mobile.value.length == 11)
   {return true;
   }

@@ -1,4 +1,6 @@
+
 const url = "https://send-it-app.herokuapp.com";
+
 const email = document.getElementById("email");
 // const mobile = document.getElementById("phone-no");
 const password = document.getElementById("password");
@@ -37,6 +39,7 @@ const login = (event) => {
             Authorization: res.token,
           },
         })
+        
           .then((res) => res.json())
           .then((res) => {
             console.log("res", res);

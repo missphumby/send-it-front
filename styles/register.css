@@ -4,6 +4,7 @@ body{
     padding: 0;
     width: 100%;
     background-color: white;
+    background-color: rgb(243, 243, 240)
 }
 header{
     position: fixed;
@@ -55,8 +56,9 @@ section{
     min-height: 1000px;
 }
 .form-section{
-    width: 100%;
+    width: 80%;
     position: relative;
+    margin: 0 auto;
     /* top: 90px; */
     background-color: rgb(243, 243, 240);
     height: 700px;
@@ -111,7 +113,7 @@ footer{
     position: relative;
     margin: 0;
     padding: 0;
-    border-top: 4px solid grey;
+    /* border-top: 4px solid grey; */
     width: 100%;
     align-items: center;
 }
@@ -120,7 +122,7 @@ footer{
     width: 100%;
     margin: 0 auto;
     height: 190px;
-    border-bottom: 3px solid gray;
+    /* border-bottom: 3px solid gray; */
 }
 .footerSection ul li{
     float: left;
@@ -154,9 +156,78 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
     justify-content: center;
     padding: 10px 0;
+    border-top: 3px solid gray
     
 }
 #moreinfo{
     line-height: 5px;
     margin-top: 42px;
 }
+
+@media screen and (max-width: 650px){
+    .logo{
+        display: none;
+    }
+    .headerNav{
+        margin-left: 0;
+        float: none
+    }
+
+}
+@media screen and (max-width: 400px){
+    .headerSection ul{
+  margin-left: 0;
+    }
+    .headerNav{
+        margin-left: 0;
+        float: none
+    }
+     .headerNav ul li a{
+         font-size: 20px;
+     }
+}
+
+
+@media only screen and (max-width: 700px) {  
+    body{
+      height: 90vh
+    }  
+    .footerSection ul li{
+      float: left;
+      width: 30%;
+      margin: 25px 15px;
+  }
+  #moreinfo{
+    display: none
+  } 
+  .footerSection ul li{
+    float: left;
+    width: 25%;
+    margin: 25px 10px;
+}
+
+.footerSection h2 {
+    
+    font-size: 25px;
+    
+}
+}
+ @media only screen and (max-width: 400px) {  
+    .footerSection h2{
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .footersection p{
+          display: block;
+          font-size: 14px;
+          
+      
+      }
+      .footerSection ul{
+        margin-left: 0;
+      }
+      /* .banner{
+        height: 500px
+      } */
+    }
