@@ -331,12 +331,15 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    #moreinfo{
      display: none
    } 
+   .logo img{
+     display: none;
+   }
    .banner{
      background-position: center;
    }
    .footerSection ul li{
     float: left;
-    width: 30%;
+    width: 25%;
     margin: 25px 15px;
 }
 
