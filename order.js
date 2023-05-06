@@ -1,9 +1,9 @@
-const mobile = document.getElementById('mobile');
-console.log(mobile)
+const mobile = document.getElementById("mobile");
+console.log(mobile);
 const firstname = localStorage.getItem("firstname");
 // const token = localStorage.getItem("token");
 // const userId = localStorage.getItem("userId");
-const url = "https://send-it-app.herokuapp.com";
+const url = "https://sendit-backend-theta.vercel.app";
 
 // preventing unauthorised users from accessing the page
 // if(!token && !userId){
@@ -20,13 +20,13 @@ logout.addEventListener("click", function () {
 });
 
 const createOrder = (event) => {
-   event.preventDefault();
+  event.preventDefault();
 
   fetch(`${url}/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-       Authorization: token
+      Authorization: token,
     },
     body: JSON.stringify({
       userId,
@@ -50,30 +50,30 @@ const createOrder = (event) => {
     .catch((err) => console.log("error occured", err));
 };
 
-function isNumberMatch(){
+function isNumberMatch() {
   let numbers = /^[0-9]+$/;
-  if(mobile.value.match(numbers) && mobile.value.length == 11)
-  {return true;
+  if (mobile.value.match(numbers) && mobile.value.length == 11) {
+    return true;
+  } else if (mobile.value.length < 11 || mobile.value.length > 11) {
+    toastr.error("Phone number must be valid");
+    return false;
+  } else {
+    toastr.error("Recipient Mobile-Number must have numeric characters only");
+    mobile.focus();
+    return false;
   }
-  else if(mobile.value.length < 11 || mobile.value.length > 11){
-     toastr.error("Phone number must be valid")
-     return false;
-  }
-  else{
-  toastr.error('Recipient Mobile-Number must have numeric characters only');
-  mobile.focus();
-  return false;}
-  }
-
-function cancelOrd(){
-  document.getElementById("pickup").value = ""
-  document.getElementById("dest").value = ""
-  document.getElementById("name").value = ""
-  document.getElementById("mobile").value = ""
-
 }
 
-document.getElementById("registration-form").addEventListener("submit", createOrder)
-document.getElementById('cancel').addEventListener('click', function(e){
-  window.location.href = './profile.html'
-})
+function cancelOrd() {
+  document.getElementById("pickup").value = "";
+  document.getElementById("dest").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("mobile").value = "";
+}
+
+document
+  .getElementById("registration-form")
+  .addEventListener("submit", createOrder);
+document.getElementById("cancel").addEventListener("click", function (e) {
+  window.location.href = "./profile.html";
+});

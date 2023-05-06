@@ -1,5 +1,4 @@
-
-const url = "https://send-it-app.herokuapp.com";
+const url = "https://sendit-backend-theta.vercel.app";
 
 const email = document.getElementById("email");
 // const mobile = document.getElementById("phone-no");
@@ -21,15 +20,11 @@ const login = (event) => {
   })
     .then((res) => res.json())
     .then((res) => {
-
-      if (res.message == "Authorization failed" && password != "" ){
-        toastr.info('Unauthorized User, please enter a valid email address')
-       }
-       else if(res.error ){
-        toastr.error('Incorrect password, please enter a valid password')
-        
-       }
-       else if (res.token) {
+      if (res.message == "Authorization failed" && password != "") {
+        toastr.info("Unauthorized User, please enter a valid email address");
+      } else if (res.error) {
+        toastr.error("Incorrect password, please enter a valid password");
+      } else if (res.token) {
         const { _id } = res.user;
         localStorage.setItem("token", res.token);
 
@@ -39,35 +34,29 @@ const login = (event) => {
             Authorization: res.token,
           },
         })
-        
           .then((res) => res.json())
           .then((res) => {
             console.log("res", res);
 
-             if (res.success) {
+            if (res.success) {
               console.log("res2", res.success);
               localStorage.setItem("firstname", res.data.firstname);
               localStorage.setItem("userId", res.data._id);
-              console.log("got here", res.data.roles[0])
+              console.log("got here", res.data.roles[0]);
               if (res.data.roles[0].name == "user") {
                 window.location.href = "./profile.html";
-                toastr.success("Login successful")
+                toastr.success("Login successful");
               } else if (res.data.roles[0].name == "admin") {
                 window.location.href = "./admin.html";
-                toastr.success("Login successful")
+                toastr.success("Login successful");
               }
-            }
-            else if (res.error) {
+            } else if (res.error) {
               console.log("error", res.err);
-              
             }
           })
           .catch((err) => console.log("error occurred", err));
-
-
       }
-    })
+    });
 };
 
 document.getElementById("registration-form").addEventListener("submit", login);
-

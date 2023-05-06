@@ -331,7 +331,7 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    #moreinfo{
      display: none
    } 
-   .logo img{
+   .logo {
      display: none;
    }
    .banner{
@@ -432,9 +432,9 @@ li{
 }
 
 @media screen and (max-width: 500px){
-  .logo{
+  /* .logo{
     display: none
-  }
+  } */
 }
 @media only screen and (max-width: 900x) {    
   .banner{

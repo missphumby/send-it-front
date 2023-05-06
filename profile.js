@@ -1,5 +1,5 @@
 const firstname = localStorage.getItem("firstname");
-const url = "https://send-it-app.herokuapp.com";
+const url = "https://sendit-backend-theta.vercel.app";
 
 //handling logout
 const logout = document.getElementById("logout");
@@ -15,7 +15,7 @@ document.querySelector("#nameBar").innerHTML = firstname.toUpperCase();
 fetch(`${url}/order/${userId}`, {
   method: "GET",
   headers: {
-     Authorization: token,
+    Authorization: token,
   },
 })
   .then((res) => res.json())
@@ -28,19 +28,25 @@ fetch(`${url}/order/${userId}`, {
     } else {
       // result.data.sort((a, b) => a.id - b.id);
       renderTableData(result.data, ordersTable);
-console.log(result.data)
+      console.log(result.data);
       //total no of orders
-      document.getElementById("ordersLength").innerHTML = `${result.data.length}`;
+      document.getElementById(
+        "ordersLength"
+      ).innerHTML = `${result.data.length}`;
       //Number of items in transit
-      const transitOrders = result.data.filter((val) => val.status === "In transit").length;
+      const transitOrders = result.data.filter(
+        (val) => val.status === "In transit"
+      ).length;
       document.getElementById("transit").innerHTML = `${transitOrders}`;
       //number of delivered items
-      const delivered = result.data.filter((val) => val.status === "delivered")
-        .length;
+      const delivered = result.data.filter(
+        (val) => val.status === "delivered"
+      ).length;
       document.getElementById("delivered").innerHTML = `${delivered}`;
       //number of cancelled items
-      const cancelled = result.data.filter((val) => val.status === "Cancelled")
-        .length;
+      const cancelled = result.data.filter(
+        (val) => val.status === "Cancelled"
+      ).length;
       document.getElementById("cancelled").innerHTML = `${cancelled}`;
     }
   });
@@ -63,21 +69,21 @@ const renderTableData = (data, ordersTable) => {
 
   const destPrompt = (orderId) => {
     console.log("order", orderId);
-    const newDest = document.getElementById('newDest')
-    const saveChanges = document.getElementById('saveEdit')
-    console.log(saveChanges)
-    console.log(newDest)
-    saveChanges.addEventListener('click', function(){
-if (newDest.value !== "") {
-  changeDestination(newDest, orderId);
-  console.log(newDest.value)
-} else {
-  return;
-}
-    })
-
+    const newDest = document.getElementById("newDest");
+    const saveChanges = document.getElementById("saveEdit");
+    console.log(saveChanges);
+    console.log(newDest);
+    saveChanges.addEventListener("click", function () {
+      if (newDest.value !== "") {
+        changeDestination(newDest, orderId);
+        console.log(newDest.value);
+      } else {
+        return;
+      }
+    });
   };
-  document.getElementById('targetOutput ul:first').innerHTML = document.getElementsByName('username').value
+  document.getElementById("targetOutput ul:first").innerHTML =
+    document.getElementsByName("username").value;
   const changeDestination = function (newDest, orderId) {
     fetch(`${url}/order/${orderId}`, {
       method: "PATCH",
@@ -86,7 +92,7 @@ if (newDest.value !== "") {
         //   Authorization: token
       },
       body: JSON.stringify({
-        destination: newDest.value.toUpperCase()
+        destination: newDest.value.toUpperCase(),
       }),
     })
       .then((res) => res.json())
@@ -103,7 +109,8 @@ if (newDest.value !== "") {
 
   let changeButton = document.getElementsByClassName("changeDest");
   changeButton = Array.from(changeButton);
-  changeButton.forEach((b) =>b.addEventListener("click", (event) => {
+  changeButton.forEach((b) =>
+    b.addEventListener("click", (event) => {
       event.preventDefault();
       const orderId = b.getAttribute("orderid");
       destPrompt(orderId);
@@ -112,9 +119,8 @@ if (newDest.value !== "") {
 
   //cancel order
   const cancelPrompt = (orderId) => {
-
     console.log("order", orderId);
-    if(confirm('Are you sure you want to cancel this order?') === true) {
+    if (confirm("Are you sure you want to cancel this order?") === true) {
       cancelOrder(orderId);
       // disabledBtn(orderId)
     } else {
@@ -129,7 +135,7 @@ if (newDest.value !== "") {
         //   Authorization: token
       },
       body: JSON.stringify({
-        status
+        status,
       }),
     })
       .then((res) => res.json())
@@ -139,43 +145,43 @@ if (newDest.value !== "") {
           toastr.success("Order successfully cancelled!");
           location.reload();
           // disabledBtn()
-                  }
+        }
       })
       .catch((err) => console.log("error occured", err));
   };
 
   let cancelButton = document.getElementsByClassName("cancelOrder");
   cancelButton = Array.from(cancelButton);
-  cancelButton.forEach((b) =>b.addEventListener("click", (event) => {
+  cancelButton.forEach((b) =>
+    b.addEventListener("click", (event) => {
       event.preventDefault();
       const orderId = b.getAttribute("orderid");
       cancelPrompt(orderId);
     })
   );
 
-disableBtn(changeButton)
-disableBtn(cancelButton)
-//   cancelButton.forEach((b) => {
-//     const tr = b.parentElement.parentElement.children[5];
-//  if(tr.innerText == "Cancelled"){
-//    b.disabled = true;
-//  }
-//   })
+  disableBtn(changeButton);
+  disableBtn(cancelButton);
+  //   cancelButton.forEach((b) => {
+  //     const tr = b.parentElement.parentElement.children[5];
+  //  if(tr.innerText == "Cancelled"){
+  //    b.disabled = true;
+  //  }
+  //   })
 
-//   changeButton.forEach((b) => {
-//     const tr = b.parentElement.parentElement.children[5];
-//  if(tr.innerText == "Cancelled"){
-//    b.disabled = true;
-//  }
-//   })
+  //   changeButton.forEach((b) => {
+  //     const tr = b.parentElement.parentElement.children[5];
+  //  if(tr.innerText == "Cancelled"){
+  //    b.disabled = true;
+  //  }
+  //   })
+};
 
- };
-
- const disableBtn = (btnAction) => {
+const disableBtn = (btnAction) => {
   btnAction.forEach((b) => {
     const tr = b.parentElement.parentElement.children[6];
     if (tr.innerText == "Cancelled" || tr.innerText === "Delivered") {
       b.disabled = true;
     }
-  })
-}
+  });
+};
