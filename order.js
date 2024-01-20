@@ -3,7 +3,7 @@ console.log(mobile);
 const firstname = localStorage.getItem("firstname");
 // const token = localStorage.getItem("token");
 // const userId = localStorage.getItem("userId");
-const url = "https://sendit-backend-theta.vercel.app";
+const url = "https://sendit-backend-n2mw.onrender.com";
 
 // preventing unauthorised users from accessing the page
 // if(!token && !userId){

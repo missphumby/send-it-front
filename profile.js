@@ -1,5 +1,5 @@
 const firstname = localStorage.getItem("firstname");
-const url = "https://sendit-backend-theta.vercel.app";
+const url = "https://sendit-backend-n2mw.onrender.com";
 
 //handling logout
 const logout = document.getElementById("logout");

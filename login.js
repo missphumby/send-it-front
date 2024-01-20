@@ -1,4 +1,4 @@
-const url = "https://sendit-backend-theta.vercel.app";
+const url = "https://sendit-backend-n2mw.onrender.com";
 
 const email = document.getElementById("email");
 // const mobile = document.getElementById("phone-no");
