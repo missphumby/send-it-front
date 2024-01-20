@@ -100,6 +100,14 @@ footer h5{
     margin-left: auto
 
 }
+#cancelOrder{
+    padding: 0;
+    background-color: transparent;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
 
 small{
     font-size: 14px;
